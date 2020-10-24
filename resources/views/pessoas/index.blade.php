@@ -1,0 +1,36 @@
+@extends('template.base')
+
+@section('titulo', 'Formulario de Pessoas')
+    
+@section('conteudo')
+    
+    <h1>Pessoas Cadastradas</h1>
+
+    <a href="/pessoas/create">Novo Cadastro</a>
+
+    <hr>
+
+    <table style="width:100%">
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+        @foreach ($pessoas as $p)
+          <tr>
+            <td>{{ $p->nome }}</td>
+            <td>{{ $p->telefone }}</td>
+            <td>{{ $p->email }}</td>
+            <td>
+              <!-- Essa linha faz tal coisa 1 -->
+              {{-- Essa linha faz tal coisa 2 --}}
+              <a href="/pessoas/{{ $p->id }}/edit">Editar</a>
+              <a href="/pessoas/{{ $p->id }}">Excluir</a>
+            </td>
+          </tr>
+        @endforeach
+      </table>
+
+      {{ $pessoas->links() }}
+@endsection
